@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from app.routes.prescription import router  # import router correctly
+from app.routes import prescription, speech
 
-app = FastAPI(title="Prescription Analyzer")
+app = FastAPI(title="MediMouth API")
 
-app.include_router(router)  # include it here
+app.include_router(prescription.router)
+app.include_router(speech.router)
 
 @app.get("/")
 async def root():
